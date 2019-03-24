@@ -10,7 +10,7 @@ node {
      myTestContainer.pull()
      myTestContainer.inside {
        environment { HOME=".",
-                    'npm_config_cache=npm-cache'
+                    npm_config_cache=npm-cache
                     }
        sh 'npm install --only=dev'
        sh 'npm test'
@@ -21,7 +21,6 @@ node {
      def myTestContainer = docker.image('node:4.6')
      myTestContainer.pull()
      myTestContainer.inside("--link ${mysql.id}:mysql") { // using linking, mysql will be available at host: mysql, port: 3306
-          environment { HOME="." }
           sh 'npm install --only=dev' 
           sh 'npm test'                     
      }                                   
