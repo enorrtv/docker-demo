@@ -8,10 +8,10 @@ node {
    stage('test') {
      def myTestContainer = docker.image('node:4.6')
      myTestContainer.pull()
-     myTestContainer.inside {
+     myTestContainer.inside('-u root'){
        environment { HOME="."
                     npm_config_cache=npm-cache
-                    -u root
+                    
                     }
               
        sh 'npm install --only=dev'
