@@ -12,6 +12,7 @@ node {
        environment { HOME="."
                     npm_config_cache=npm-cache
                     }
+       args {-u root}             
        sh 'npm install --unsafe-perm=true --allow-root --only=dev'
        sh 'npm test'
      }
